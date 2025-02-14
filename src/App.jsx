@@ -9,7 +9,7 @@ import Users from './pages/Users'
 import useStore from './store'
 
 function App() {
-  const { fetchUsers } = useStore();
+  const fetchUsers = useStore((state) => state.fetchUsers);
 
   // Trigger the fetchUsers action from the store when the app mounts
   useEffect(() => {
