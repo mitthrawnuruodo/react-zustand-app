@@ -2,7 +2,7 @@ import useStore from '../store';
 
 function Users() {
   // Retrieve 'users' state from the Zustand store
-  const { users } = useStore();
+  const users = useStore((state) => state.users);
 
   if (!users) return <p>Error loading users.</p>; // Handle potential failure
 
