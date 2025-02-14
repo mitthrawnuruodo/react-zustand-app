@@ -4,12 +4,13 @@ function Users() {
   // Retrieve 'users' state from the Zustand store
   const { users } = useStore();
 
+  if (!users) return <p>Error loading users.</p>; // Handle potential failure
+
+  if (users.length === 0) return <p>No users found.</p>; // Differentiate from loading
+
   return (
     <div>
       <h1>Users</h1>
-      {users.length === 0 ? (
-        <p>Loading users...</p>
-      ) : (
         <ul>
           {users.map(user => (
             <li key={user.id}>
@@ -17,9 +18,8 @@ function Users() {
             </li>
           ))}
         </ul>
-      )}
     </div>
-  )
+  );
 }
 
 export default Users;
