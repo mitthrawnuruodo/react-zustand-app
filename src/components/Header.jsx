@@ -1,10 +1,17 @@
-import { useState } from 'react'
-import { Link } from 'react-router'
+import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router'
 import './Header.css' // Import the CSS file for styling
 
 function Header() {
   // State to toggle the mobile menu open/closed
   const [isOpen, setIsOpen] = useState(false)
+
+  const location = useLocation();
+
+  // Close the menu whenever the route changes
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location])
 
   // Toggle function for the mobile menu
   const toggleMenu = () => {
